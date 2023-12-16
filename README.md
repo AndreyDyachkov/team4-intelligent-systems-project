@@ -8,7 +8,8 @@
 - Project_inconsistency_check_v2 -- a piece of code checking the knowledge base for inconsistency according to the rule base (Python)
 
 ### Convolutional neural network
-- 
+- CNN-training-model.ipynb
+  
 ### Web-service
 - index_web.html -- a webpage of the web service
 - background_web.py, cnn_web.py, knowledgeBase_web.py -- a server part for the web-service
