@@ -1,0 +1,27 @@
+@prefix ind:<URN:inds:>.
+@prefix prop:<URN:prop:>.
+@prefix classes:<URN:classes:>.
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+ind:KPI	a owl:Class;
+		owl:oneof ind:kpi0,ind:kpi1,ind:kpi2,ind:kpi3.
+
+ind:resources a owl:Class;
+		owl:oneof ind:resource0,ind:resource1,ind:resource2.
+
+
+ind:KPI a owl:Class;
+owl:disjointWith ind:resources.
+
+ind:resources a owl:Class;
+owl:disjointWith ind:KPI.
+
+
+ind:hasKPI a owl:ObjectProperty;
+a owl:IrreflexiveProperty.
+
+ind:hasResource a owl:ObjectProperty;
+a owl:AsymmetricProperty.

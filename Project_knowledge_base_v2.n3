@@ -1,0 +1,87 @@
+@prefix ind:<URN:inds:>.
+@prefix prop:<URN:prop:>.
+@prefix classes:<URN:class>.
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+ind:process0 rdf:type classes:Process;
+		rdfs:label "Detecting lung diseases from medical imaging";
+		rdf:isDefinedBy	"T4 project group";
+		prop:hasInput ind:kaggledataset;
+        prop:hasInput ind:messagewithimage;
+        prop:hasOutput ind:text;
+        prop:hasKPI	ind:kpi0;
+        prop:hasKPI	ind:kpi1;
+        prop:hasKPI	ind:kpi2;
+        prop:hasKPI	ind:kpi3;
+        prop:hasResource ind:resource0;
+        prop:hasResource ind:resource1;
+        prop:hasResource ind:resource2.
+
+ind:process01 prop:SubProcess ind:process0;
+		rdfs:label "Dataset and input Vectorizing";
+        prop:hasInput ind:kaggledataset;
+        prop:hasInput ind:messagewithimage;
+        prop:hasResource ind:resource0;
+        prop:hasResource ind:resource1.
+
+ind:process02 prop:SubProcess ind:process0;
+		rdfs:label "Neural network construction";
+        prop:hasInput ind:process01;
+        prop:hasOutput ind:process03;
+        prop:hasKPI	ind:kpi0;
+        prop:hasKPI	ind:kpi1;
+        prop:hasKPI	ind:kpi2;
+        prop:hasResource ind:resource2.
+
+ind:process03 prop:SubProcess ind:process0;
+		rdfs:label "Data Recognition";
+        prop:hasInput ind:process02;
+        prop:hasOutput ind:process04;
+        prop:hasKPI	ind:kpi2;
+        prop:hasKPI	ind:kpi3;
+        prop:hasResource ind:resource0;
+        prop:hasResource ind:resource2.
+
+ind:process04 prop:SubProcess ind:process0;
+		rdfs:label "Result output";
+        prop:hasInput ind:process03;
+        prop:hasOutput ind:text;
+        prop:hasResource ind:resource0;
+        prop:hasResource ind:resource1.
+        
+
+ind:kpi0 rdf:type classes:KPI;
+        rdfs:label "Design topology".
+
+ind:kpi1 rdf:type classes:KPI;
+        rdfs:label "Design syntax".
+
+ind:kpi2 rdf:type classes:KPI;
+        rdfs:label "Disease metrics".
+
+ind:kpi3 rdf:type classes:KPI;
+        rdfs:label "Accuracy score";
+        prop:hasMin "80".
+
+
+ind:resource0 rdf:type classes:resources;
+        rdfs:label "Python libraries".
+
+ind:resource1 rdf:type classes:resources;
+        rdfs:label "Telegram bot API".
+
+ind:resource2 rdf:type classes:resources;
+        rdfs:label "CNN".
+
+
+ind:kaggledataset rdf:type classes:inputs;
+        rdfs:label "kaggledataset".
+
+ind:messagewithimage rdf:type classes:inputs;
+        rdfs:label "messagewithimage".
+        
+ind:text rdf:type classes:output;
+        rdfs:label "text".
